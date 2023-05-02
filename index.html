@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Project</title>
+
+
+    <style>
+
+        body{
+            background-color: black;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-container{
+
+            width: 50%;
+            padding: 20px;
+            border: 2px solid white;
+            margin-top: 100px;
+            overflow: hidden;
+        }
+
+        label{
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        input{
+            
+            margin-top: 15px;
+            margin-bottom: 5px;
+            width: 100%;
+            padding: 15px;
+            border: 2px solid white;
+            outline: none;
+        }
+
+        input::placeholder{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+        }
+        input:focus{
+            outline: 0;
+            border: 2px solid green;
+        }
+
+        button{
+
+            width: 20%;
+            padding: 10px;
+            border: 2px solid white;
+            background-color: white;
+            color: black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            /* transform: translateX(300px); */
+            /* transform: translateX(0); */
+        }
+        .inputes-top{
+            width: 90%;
+            overflow: hidden;
+        }
+        .inputs-bottom{
+            width: 100%;
+            margin-top: 20px;
+        }
+        .button-position{
+
+            width: 90%;
+            overflow: hidden;
+        }
+        .first{
+                margin-left: 300px;
+        }
+        .second{
+                margin-left: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+
+    <div class="form-container">
+
+        <form action="">
+        <div class="inputes-top">
+
+                <label for="email">Email</label><br>
+                <input type="email" placeholder="Input Email Correctly" id="email" onkeyup="checkpassword()"><br>
+
+                <label for="password">Password</label><br>
+                <input type="password" placeholder="Input Password Correctly" id="password" onkeyup="checkpassword()">
+
+
+
+        </div>
+        <div class="inputs-bottom">
+            <div class="button-position">
+
+                <button id="login-btn" class="second" onmouseenter="checkLogin()"> Log In</button>
+
+            </div>
+        </div>
+    
+        </form>
+    </div>
+
+
+    <script>
+
+        let loginButton = document.getElementById("login-btn");
+        let password = document.getElementById("password").value;
+        let email = document.getElementById("email").value;
+
+
+
+        // loginButton.addEventListener("mouseover", e =>{
+
+        //     e.preventDefault();
+        //         //alert("working");
+
+        //         if(password !== "collinsadi" || email !== "collinsadi@gmail.com" && loginButton.classList.contains("second")){
+
+        //         loginButton.classList.remove("second");
+        //         loginButton.classList.add("first")
+
+        //         } else if(loginButton.classList.contains("first")){
+
+        //             loginButton.classList.remove("first");
+        //             loginButton.classList.add("second");
+        //             alert("hello")
+        //         }
+            
+        // })
+
+
+            function checkLogin(){
+                    if(password !== "collinsadi" || email !== "collinsadi@gmail.com" && loginButton.classList.contains("second")){
+
+                loginButton.classList.remove("second");
+                loginButton.classList.add("first")
+
+                } else{
+                    loginButton.classList.remove("first");
+                }
+                
+                loginButton.addEventListener("mouseenter", ()=>{
+
+                       if(loginButton.classList.contains("first")){
+
+                                            loginButton.classList.remove("first");
+                                            loginButton.classList.add("second");
+                                            //alert("hello")
+                                        
+                                        } else if(password !== "collinsadi" || email !== "collinsadi@gmail.com" && loginButton.classList.contains("second")){
+                                            loginButton.classList.remove("second");
+                                                loginButton.classList.add("first")              
+                                        } else if(email === "collinsadi20@gmail.com" && password === "collinsadi"){
+                                            loginButton.classList.remove("first");
+                                            loginButton.classList.add("second");
+                                        }
+
+                })
+                
+                
+            }
+
+
+            // function checkpassword(){
+            //     if(email === "collinsadi20@gmail.com" && password === "collinsadi"){
+            //         loginButton.classList.remove("first");
+            //         loginButton.classList.add("second");
+            //     }
+            // }
+    </script>
+
+</body>
+</html>
