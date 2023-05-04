@@ -10,7 +10,7 @@
     <style>
 
         body{
-            background-color: black;
+            background-color: pink;
             color: white;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             display: flex;
@@ -45,6 +45,7 @@
         input::placeholder{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: bold;
+            background-color: white;
         }
         input:focus{
             outline: 0;
@@ -84,6 +85,20 @@
                 margin-left: 0;
         }
 
+        @media (max-width: 835px){
+            .form-container{
+                width: 90%;
+            }
+
+            .first{
+                margin-left: 150px;
+        }
+
+        button{
+            width: 30%;
+        }
+
+        }
 
     </style>
 </head>
@@ -96,10 +111,10 @@
         <div class="inputes-top">
 
                 <label for="email">Email</label><br>
-                <input type="email" placeholder="Input Email Correctly" id="email" onkeyup="checkpassword()"><br>
+                <input type="email" placeholder="Input Email Correctly" id="email" onkeyup="checkingEmail()"><br>
 
                 <label for="password">Password</label><br>
-                <input type="password" placeholder="Input Password Correctly" id="password" onkeyup="checkpassword()">
+                <input type="password" placeholder="Input Password Correctly" id="password" onkeyup="checkingPassword()">
 
 
 
@@ -119,8 +134,7 @@
     <script>
 
         let loginButton = document.getElementById("login-btn");
-        let password = document.getElementById("password").value;
-        let email = document.getElementById("email").value;
+      
 
 
 
@@ -145,10 +159,14 @@
 
 
             function checkLogin(){
-                    if(password !== "collinsadi" || email !== "collinsadi@gmail.com" && loginButton.classList.contains("second")){
 
+                let password = document.getElementById("password").value;
+                let email = document.getElementById("email").value;
+                    if(password !== "collinsadi" || email !== "collinsadi@gmail.com" && loginButton.classList.contains("second")){
+                
                 loginButton.classList.remove("second");
                 loginButton.classList.add("first")
+                event.preventDefault();
 
                 } else{
                     loginButton.classList.remove("first");
@@ -176,12 +194,33 @@
             }
 
 
-            // function checkpassword(){
-            //     if(email === "collinsadi20@gmail.com" && password === "collinsadi"){
-            //         loginButton.classList.remove("first");
-            //         loginButton.classList.add("second");
-            //     }
-            // }
+        const checkingPassword = ()=>{
+
+
+            let password = document.getElementById("password");
+            if(password.value !== "collinsadi"){
+
+                password.style.border = "2px solid red";
+
+            }else{
+                password.style.border = "2px solid green";
+            }
+
+        }
+
+
+        const checkingEmail = ()=>{
+            let email = document.getElementById("email");
+
+            if(email.value !== "collinsadi@gmail.com"){
+
+                email.style.border = "2px solid red";
+
+            }else{
+                email.style.border = "2px solid green"
+            }
+
+        }
     </script>
 
 </body>
